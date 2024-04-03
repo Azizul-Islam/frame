@@ -105,14 +105,14 @@
                         <div class="text-center">
                             <div
                                 class="flex flex-wrap justify-center gap-4 text-[4px] md:gap-6 md:text-[4px] lg:text-[6px] xl:text-[8px]">
-                                <div class="scale-105 border-primary opacity-100 rounded-md border-4 p-2 transition-all"
+                                {{-- <div class=" border-transparent opacity-75 hover:opacity-100 hover:shadow-xl rounded-md border-4 p-2 transition-all"
                                     style="font-size: 1em; cursor: pointer;">
                                     <div
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
-                                        <img src="{{ asset('frontend/frameImages/full_frame-6efb327c.png') }}" alt="" style="width: 100%;">
+                                        <img src="{{ asset('frontend/frameImages/baisakh-fb-frame11.png') }}" alt="" style="width: 100%;">
                                         <div
                                         id="overlayContainer" class="overlay"
-                                            style="position: absolute; top: 30.75%; left: 18.5%; height: 24.5em; width: 24em; font-size: 1em; border-radius: 999999px; border-width: 0.1em;">
+                                            style="position: absolute; top: 19%; left: 20%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%; border-width: 0.1em;">
                                             <div
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
@@ -129,16 +129,16 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class=" border-transparent opacity-75 hover:opacity-100 hover:shadow-xl rounded-md border-4 p-2 transition-all"
+                                <div class="scale-105 border-primary opacity-100 rounded-md border-4 p-2 transition-all"
                                     style="font-size: 1em; cursor: pointer;">
                                     <div class="containerTest"
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
-                                        <img id="image" src="{{ asset('frontend/frameImages/full_frame-1ca0f910.png') }}" alt=""
+                                        <img id="image" src="{{ asset('frontend/frameImages/baisakh-fb-frame11.png') }}" alt=""
                                             style="width: 100%;">
                                         <div
-                                            style="position: absolute; top: 36.5%; right: 9.2%; height: 24.5em; width: 24em; font-size: 1em; border-radius: 999999px; border-width: 0.1em;">
+                                            style="position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%; ">
                                             <div id="overlayContainer1" class="overlay"
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
@@ -307,32 +307,32 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
-        var nameInput = document.getElementById('name');
-        var mobileInput = document.getElementById('mobile');
-        // Get the display div
-        var displayName = document.getElementById('displayName');
-        var displaymobile = document.getElementById('displaymobile');
+        // var nameInput = document.getElementById('name');
+        // var mobileInput = document.getElementById('mobile');
+        // // Get the display div
+        // var displayName = document.getElementById('displayName');
+        // var displaymobile = document.getElementById('displaymobile');
 
-        // Add event listener for the 'input' event
-        nameInput.addEventListener('input', function (event) {
-            // Get the value of the input element when it changes
-            var name = event.target.value;
-            // Update the content of the display div with the input value
-            displayName.textContent = name;
-            displayName1.textContent = name;
-        });
-        mobileInput.addEventListener('input', function (event) {
-            var mobile = event.target.value;
-            displaymobile.textContent = mobile;
-            displaymobile1.textContent = mobile;
-        });
+        // // Add event listener for the 'input' event
+        // nameInput.addEventListener('input', function (event) {
+        //     // Get the value of the input element when it changes
+        //     var name = event.target.value;
+        //     // Update the content of the display div with the input value
+        //     displayName.textContent = name;
+        //     displayName1.textContent = name;
+        // });
+        // mobileInput.addEventListener('input', function (event) {
+        //     var mobile = event.target.value;
+        //     displaymobile.textContent = mobile;
+        //     displaymobile1.textContent = mobile;
+        // }); 
 
         document.getElementById('userImage').addEventListener('change', function (event) {
             var file = event.target.files[0];
             var reader = new FileReader();
             reader.onload = function (e) {
                 var url = e.target.result;
-                document.getElementById('overlayContainer').style.backgroundImage = "url('" + url + "')";
+                // document.getElementById('overlayContainer').style.backgroundImage = "url('" + url + "')";
                 document.getElementById('overlayContainer1').style.backgroundImage = "url('" + url + "')";
             };
 

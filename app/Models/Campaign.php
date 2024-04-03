@@ -12,6 +12,7 @@ class Campaign extends Model
     protected $fillable = [
         'heading_en',
         'heading_bn',
+        'meta_title',
         'description_en',
         'description_bn',
         'frame_one',

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('heading_en');
             $table->string('heading_bn')->nullable();
+            $table->string('meta_title')->nullable();
             $table->text('description_en');
             $table->text('description_bn')->nullable();
             $table->string('frame_one');
