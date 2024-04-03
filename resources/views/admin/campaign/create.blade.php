@@ -81,7 +81,7 @@
                         
 
                         <div class="row mb-0">
-                            <div class="col-md-9">
+                            <div class="col-md-12 text-end">
                                 <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-secondary">Cancel</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit') }}

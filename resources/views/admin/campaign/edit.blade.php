@@ -65,6 +65,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                @if(!blank($campaign->frame_one))
+                                <div>
+                                    <img src="{{ asset('backend/images/'.$campaign->frame_one) }}" alt="frame_one" width="100">
+                                </div>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label for="frame_two">{{ __('Frame Two') }}</label>
@@ -75,13 +80,18 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                @if(!blank($campaign->frame_two))
+                                <div>
+                                    <img src="{{ asset('backend/images/'.$campaign->frame_two) }}" alt="frame_two" width="100">
+                                </div>
+                                @endif
                             </div>
                         </div>
 
                         
 
                         <div class="row mb-0">
-                            <div class="col-md-9">
+                            <div class="col-md-12 text-end">
                                 <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-secondary">Cancel</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Update') }}

@@ -83,15 +83,15 @@ class CampaignController extends Controller
             'heading_bn' => 'nullable|string',
             'description_en' => 'required|string',
             'description_bn' => 'nullable|string',
-            'frame_one'          => 'required|mimes:jpeg,jpg,png',
+            'frame_one'          => 'nullable|mimes:jpeg,jpg,png',
             'frame_two'         => 'nullable|mimes:jpeg,jpg,png'
         ]);
         //if request has any frame
         if($request->has('frame_one')) {
             $path = public_path('backend/images/'.$campaign->frame_one);
-        if(file_exists($path) && $campaign->frame_one != null){
-            unlink($path);
-        }
+            if(file_exists($path) && $campaign->frame_one != null){
+                unlink($path);
+            }
             $file = $request->file('frame_one');
             $name_gen = rand().".".$file->getClientOriginalExtension();
             $file->move(public_path('backend/images'),$name_gen);
@@ -100,16 +100,16 @@ class CampaignController extends Controller
         //if request has any frame
         if($request->has('frame_two')) {
             $path_two = public_path('backend/images/'.$campaign->frame_two);
-        if(file_exists($path_two) && $campaign->frame_two != null){
-            unlink($path_two);
-        }
+            if(file_exists($path_two) && $campaign->frame_two != null){
+                unlink($path_two);
+            }
             $file = $request->file('frame_two');
             $name_gen = rand().".".$file->getClientOriginalExtension();
             $file->move(public_path('backend/images'),$name_gen);
             $data['frame_two'] = $name_gen;
         }
         $campaign->update($data);
-        return back();
+        return redirect()->route('campaigns.index');
     }
 
     /**
@@ -126,6 +126,12 @@ class CampaignController extends Controller
             unlink($path_two);
         }
         $campaign->delete();
+        return back();
+    }
+
+    public function statusChange(Campaign $campaign)
+    {
+        $campaign->update(['status' => !$campaign->status]);
         return back();
     }
 }

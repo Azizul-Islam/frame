@@ -20,6 +20,7 @@
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Heading</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Frame One</th>
                             <th scope="col">Frame Two</th>
                             <th scope="col">Status</th>
@@ -31,29 +32,34 @@
                           <tr>
                             <th scope="row">{{ $index+1 }}</th>
                             <td>{{ $campaing->heading_en }}</td>
+                            <td>{{ $campaing->description_en }}</td>
                             <td>
                                 <a href="{{ asset('backend/images/'.$campaing->frame_one) }}">
-                                    <img src="{{ asset('backend/images/'.$campaing->frame_one) }}" class="w-50" />
+                                    <img src="{{ asset('backend/images/'.$campaing->frame_one) }}" width="100" />
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ asset('backend/images/'.$campaing->frame_two) }}">
-                                    <img src="{{ asset('backend/images/'.$campaing->frame_two) }}" class="w-50" />
+                                    <img src="{{ asset('backend/images/'.$campaing->frame_two) }}" width="100" />
                                 </a>
                                 
                             </td>
                             <td>
-                                {{ $campaing->status }}
+                                @if($campaing->status == 1)
+                                <a href="{{ route('campaigns.status-change',$campaing) }}" >Active</a>
+                                @else
+                                <a href="{{ route('campaigns.status-change',$campaing) }}" >In Active</a>
+                                @endif
                             </td>
                             <td>
                                 <div class="btn-group">
                                     <form onsubmit="return confirm('Are you sure? you want to delete this!')" action="{{ route('campaigns.destroy',$campaing) }}"  method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick class="btn btn-outline-danger mr-2">Delete</button>
+                                        <button type="submit" onclick class="btn btn-outline-danger">Delete</button>
                                     </form>
                                 
-                                <a href="{{ route('campaigns.edit',$campaing) }}" class="btn btn-outline-info mr-2">Edit</a>
+                                <a href="{{ route('campaigns.edit',$campaing) }}" class="btn btn-outline-info">Edit</a>
                                 </div>
                             </td>
                           </tr>
