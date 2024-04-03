@@ -7,8 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <div >
-                        <span class="float-left">{{ __('Campaing') }}</span>
-                        <a href="{{ route('campaigns.create') }}" class="float-right">
+                        <span>{{ __('Campaing') }}</span>
+                        <a href="{{ route('campaigns.create') }}" class="text-end">
                             {{ __('Create') }}
                         </a>
                     </div>
@@ -71,6 +71,10 @@
                         @endforelse
                         </tbody>
                       </table>
+                      {{-- Pagination --}}
+                    <div class="d-flex justify-content-center">
+                        {!! $campaigns->links('pagination::bootstrap-4') !!}
+                    </div>
                 </div>
             </div>
         </div>

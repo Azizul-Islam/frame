@@ -105,30 +105,33 @@
                         <div class="text-center">
                             <div
                                 class="flex flex-wrap justify-center gap-4 text-[4px] md:gap-6 md:text-[4px] lg:text-[6px] xl:text-[8px]">
-                                <div class="border-transparent opacity-75 hover:opacity-100 hover:shadow-xl rounded-md border-4 p-2 transition-all"
+                                <div class="scale-105 border-primary opacity-100 rounded-md border-4 p-2 transition-all"
                                     style="font-size: 1em; cursor: pointer;">
                                     <div
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
                                         <img src="{{ asset('frontend/frameImages/full_frame-6efb327c.png') }}" alt="" style="width: 100%;">
                                         <div
+                                        id="overlayContainer" class="overlay"
                                             style="position: absolute; top: 30.75%; left: 18.5%; height: 24.5em; width: 24em; font-size: 1em; border-radius: 999999px; border-width: 0.1em;">
                                             <div
-                                                style="background-image: url(null); background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
+                                                style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
                                         </div>
                                         <div
                                             style="text-align: left; font-weight: normal; position: absolute; margin: 0px; padding: 0px; line-height: 0; top: 67%; left: 58%; height: 5.5em; font-style: italic; font-size: 1em;">
                                             <p
+                                            id="displayName"
                                                 style="color: rgb(235, 214, 216); margin: 0px 0px 1.1em; padding: 0px; font-weight: 600; line-height: 0; font-style: italic; font-size: 2em;">
                                             </p>
                                             <p
+                                            id="displaymobile"
                                                 style="color: rgb(235, 214, 216); font-weight: normal; margin: 0px; padding: 0px; line-height: 0; font-size: 1.3em;">
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="scale-105 border-primary opacity-100 rounded-md border-4 p-2 transition-all"
+                                <div class=" border-transparent opacity-75 hover:opacity-100 hover:shadow-xl rounded-md border-4 p-2 transition-all"
                                     style="font-size: 1em; cursor: pointer;">
                                     <div class="containerTest"
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
@@ -136,17 +139,17 @@
                                             style="width: 100%;">
                                         <div
                                             style="position: absolute; top: 36.5%; right: 9.2%; height: 24.5em; width: 24em; font-size: 1em; border-radius: 999999px; border-width: 0.1em;">
-                                            <div id="overlayContainer" class="overlay"
+                                            <div id="overlayContainer1" class="overlay"
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
                                         </div>
                                         <div
                                             style="text-align: right; font-weight: normal; position: absolute; margin: 0px; padding: 0px; line-height: 0; top: 60%; right: 61%; height: 5.5em; font-size: 1em;">
-                                            <p id="displayName"
+                                            <p id="displayName1"
                                                 style="color: rgb(235, 214, 216); margin: 0px 0px 1.1em; padding: 0px; font-weight: 600; line-height: 0; font-size: 2em;">
 
                                             </p>
-                                            <p id="displaymobile"
+                                            <p id="displaymobile1"
                                                 style="color: rgb(235, 214, 216); font-weight: normal; margin: 0px; padding: 0px; line-height: 0; font-size: 1.3em;">
 
                                             </p>
@@ -160,7 +163,8 @@
                         <div class="mb-4">
                             <h3 class="text-2xl">ডিজিটাল ব্যানারের জন্য আপনার তথ্য দিন:</h3>
                         </div>
-                        <form action="">
+                        <form action="" id="perticipant_form" enctype="multipart/form-data">
+                            @csrf
                             <!-- <input class="flex cursor-pointer items-center gap-2 rounded-md border border-primary bg-primary bg-opacity-5 px-6 py-[14px]" type="file" name="image" id="userImage" placeholder="সমর্থকের পদবি এবং স্থান"> -->
                             <div class="flex flex-col gap-4">
 
@@ -177,7 +181,10 @@
                                             <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                                         </svg><span class="opacity-50">আপনার ছবি যুক্ত করুন</span><input
                                             class="text-sm-lg hidden flex-1 bg-transparent outline-none" type="file"
-                                            name="image" id="userImage"></label>
+                                            name="image" id="userImage" required>
+                                            
+                                        </label>
+
                                     <div class="grid flex-1 gap-4 md:grid-cols-2"><label
                                             class="flex items-center gap-2 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px]"><label
                                                 for="name"><svg stroke="currentColor" fill="none" stroke-width="2"
@@ -189,9 +196,9 @@
                                                 </svg></label>
 
                                             <input class="text-sm-lg flex-1 bg-transparent  outline-none" type="text"
-                                                name="name" id="name" placeholder="আপনার নাম" value="">
-
-                                        </label><label
+                                                name="name" id="name" placeholder="আপনার নাম" value="" required>
+                                        </label>
+                                        <label
                                             class="flex items-center gap-3 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px] "><label
                                                 for="name">
                                                 <svg stroke="currentColor" fill="none" stroke-width="2"
@@ -206,11 +213,11 @@
                                                 </svg>
                                                 
                                             </label><input class="text-sm-lg flex-1 bg-transparent  outline-none"
-                                                type="text" name="mobile" id="mobile" placeholder="আপনার মোবাইল নম্বর"
+                                                type="text" name="mobile" id="mobile" placeholder="আপনার মোবাইল নম্বর" required
                                                 value=""></label></div>
                                 </div>
                                 <div class="flex items-center justify-center gap-4"><button id="downloadBtn"
-                                        type="button"
+                                        type="submit"
                                         class="primary-btn mt-6 flex items-center justify-center gap-2"><span>ডাউনলোড
                                             করুন</span><svg stroke="currentColor" fill="none" stroke-width="2"
                                             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
@@ -295,7 +302,9 @@
     </script> -->
     <!-- <script src="jquery-3.7.1.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
         var nameInput = document.getElementById('name');
@@ -310,33 +319,77 @@
             var name = event.target.value;
             // Update the content of the display div with the input value
             displayName.textContent = name;
+            displayName1.textContent = name;
         });
         mobileInput.addEventListener('input', function (event) {
             var mobile = event.target.value;
             displaymobile.textContent = mobile;
+            displaymobile1.textContent = mobile;
         });
 
         document.getElementById('userImage').addEventListener('change', function (event) {
             var file = event.target.files[0];
             var reader = new FileReader();
             reader.onload = function (e) {
-                console.log(e.target.result);
                 var url = e.target.result;
                 document.getElementById('overlayContainer').style.backgroundImage = "url('" + url + "')";
+                document.getElementById('overlayContainer1').style.backgroundImage = "url('" + url + "')";
             };
 
             reader.readAsDataURL(file);
         });
 
-        document.getElementById('downloadBtn').addEventListener('click', function () {
-            var container = document.querySelector('.containerTest');
-            html2canvas(container).then(function (canvas) {
-                var link = document.createElement('a');
-                link.download = 'composite_image.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
+        // document.getElementById('downloadBtn').addEventListener('click', function () {
+        //     var container = document.querySelector('.containerTest');
+        //     html2canvas(container).then(function (canvas) {
+        //         var link = document.createElement('a');
+        //         link.download = 'composite_image.png';
+        //         link.href = canvas.toDataURL('image/png');
+        //         link.click();
+        //     });
+        // });
+
+        $('#perticipant_form').on('submit',function(e){
+                e.preventDefault();
+                $('#downloadBtn').text('Processing...');
+                $('#downloadBtn').attr('disabled',true);
+                var formData = new FormData(this);
+                console.log(formData)
+                
+                $.ajax({
+                    url: "{{ route('perticipants.store') }}",
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: formData, 
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        if(data.status == 200) {
+                            $('#downloadBtn').text('ডাউনলোড করুন');
+                            $('#downloadBtn').attr('disabled',false);
+                            $('#perticipant_form')[0].reset();
+
+                            var container = document.querySelector('.containerTest');
+                            html2canvas(container).then(function (canvas) {
+                                var link = document.createElement('a');
+                                link.download = 'composite_image.png';
+                                link.href = canvas.toDataURL('image/png');
+                                link.click();
+                            });
+
+                            // alert(data.msg);
+                        }
+                        else {
+                            $('#downloadBtn').text('ডাউনলোড করুন');
+                            $('#downloadBtn').attr('disabled',false);
+                            $.each(data.errors,function(prefix,val){
+                                alert(val[0]);
+                            });
+                        }
+                    },
+    
+                });
             });
-        });
     </script>
 
 

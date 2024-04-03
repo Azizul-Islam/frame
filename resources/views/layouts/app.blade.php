@@ -34,6 +34,9 @@
                             <a class="nav-link" href="{{ route('campaigns.index') }}">{{ __('Campaing') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('perticipants.index') }}">{{ __('Perticipant') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('settings') }}">{{ __('Setting') }}</a>
                         </li>
                     </ul>

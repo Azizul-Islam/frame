@@ -37,4 +37,8 @@ Route::prefix('admin/')->middleware('auth')->group(function() {
     Route::get('settings', [App\Http\Controllers\SettingController::class,'create'])->name('settings');
     Route::post('settings', [App\Http\Controllers\SettingController::class,'store'])->name('settings');
     Route::put('settings/update{setting}', [App\Http\Controllers\SettingController::class,'update'])->name('settings.update');
+    Route::get('perticipants', [App\Http\Controllers\PerticipantController::class,'index'])->name('perticipants.index');
 });
+
+
+Route::post('perticipants', [App\Http\Controllers\PerticipantController::class,'store'])->name('perticipants.store');
