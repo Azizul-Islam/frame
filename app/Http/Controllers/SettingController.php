@@ -12,7 +12,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $setting = Setting::first();
+        return view('welcome',compact('setting'));
     }
 
     /**
@@ -31,7 +32,7 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'logo' => 'nullable|mimes:jpeg,jpg,png',
+            'logo' => 'nullable|mimes:jpeg,jpg,png,sgv',
             'company_name' => 'nullable|string',
             'facebook' => 'nullable|string',
             'twitter' => 'nullable|string',
@@ -74,7 +75,7 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         $data = $request->validate([
-            'logo' => 'nullable|mimes:jpeg,jpg,png',
+            'logo' => 'nullable|mimes:jpeg,jpg,png,svg',
             'company_name' => 'nullable|string',
             'facebook' => 'nullable|string',
             'twitter' => 'nullable|string',

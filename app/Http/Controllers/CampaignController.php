@@ -131,6 +131,7 @@ class CampaignController extends Controller
 
     public function statusChange(Campaign $campaign)
     {
+        Campaign::where('id','!=',$campaign->id)->update(['status'=>0]);
         $campaign->update(['status' => !$campaign->status]);
         return back();
     }
