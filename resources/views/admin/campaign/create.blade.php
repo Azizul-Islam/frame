@@ -35,6 +35,28 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
+                                <label for="sub_heading_en">{{ __('Sub Heading (English)') }} </label>
+                                <input id="sub_heading_en" type="text" class="form-control @error('sub_heading_en') is-invalid @enderror" name="sub_heading_en" value="{{ old('sub_heading_en') }}" autofocus>
+
+                                @error('sub_heading_en')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="sub_heading_bn">{{ __('Sub Heading (Bangla)') }}</label>
+                                <input id="sub_heading_bn" type="text" class="form-control @error('sub_heading_bn') is-invalid @enderror" name="sub_heading_bn" value="{{ old('sub_heading_bn') }}" autofocus>
+
+                                @error('sub_heading_bn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="description_en">{{ __('Description (English)') }} *</label>
                                 <textarea id="description_en" type="text" class="form-control @error('description_en') is-invalid @enderror" name="description_en" autofocus>{{ old('description_en') }}</textarea>
 

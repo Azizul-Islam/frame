@@ -34,6 +34,8 @@ class CampaignController extends Controller
         $data = $request->validate([
             'heading_en' => 'required|string',
             'heading_bn' => 'nullable|string',
+            'sub_heading_en' => 'nullable|string',
+            'sub_heading_bn' => 'nullable|string',
             'description_en' => 'required|string',
             'description_bn' => 'nullable|string',
             'frame_one'          => 'required|mimes:jpeg,jpg,png',
@@ -81,6 +83,8 @@ class CampaignController extends Controller
         $data = $request->validate([
             'heading_en' => 'required|string',
             'heading_bn' => 'nullable|string',
+            'sub_heading_en' => 'nullable|string',
+            'sub_heading_bn' => 'nullable|string',
             'description_en' => 'required|string',
             'description_bn' => 'nullable|string',
             'frame_one'          => 'nullable|mimes:jpeg,jpg,png',

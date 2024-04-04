@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('logo');
             $table->string('company_name');
+            $table->string('meta_title')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
