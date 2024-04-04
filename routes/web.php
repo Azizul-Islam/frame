@@ -36,6 +36,7 @@ Route::prefix('admin/')->middleware('auth')->group(function() {
     Route::post('settings', [App\Http\Controllers\SettingController::class,'store'])->name('settings');
     Route::put('settings/update{setting}', [App\Http\Controllers\SettingController::class,'update'])->name('settings.update');
     Route::get('perticipants', [App\Http\Controllers\PerticipantController::class,'index'])->name('perticipants.index');
+    Route::get('perticipants/export', [App\Http\Controllers\PerticipantController::class,'export'])->name('perticipants.export');
 });
 
 

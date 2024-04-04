@@ -11,6 +11,34 @@
     <title>{{ $setting->meta_title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('./frontend/frame.css') }}">
+    <style>
+        .circlediv{
+            position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%;
+        }
+        @media only screen and (max-width: 500px) {
+            .circlediv {
+            position: absolute;
+            top: 20.3%;
+            left: 20.4%;
+            height: 155px;
+            width: 155px;
+            font-size: 1em;
+            border-radius: 50%;
+            }
+        }
+        @media only screen and (min-width: 600px) and (min-width: 501px){
+            .circlediv {
+            position: absolute;
+            top: 20.3%;
+            left: 20.4%;
+            height: 155px;
+            width: 155px;
+            font-size: 1em;
+            border-radius: 50%;
+            }
+        }
+        
+    </style>
 
 </head>
 
@@ -134,7 +162,7 @@
                                         <img id="image" src="{{ asset('./backend/images/'.$campaign->frame_one) }}" alt="frame_one"
                                             style="width: 100%;">
                                         <div
-                                            style="position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%; ">
+                                            class="circlediv">
                                             <div id="overlayContainer1" class="overlay"
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
@@ -197,7 +225,7 @@
                                         <label
                                             class="flex items-center gap-3 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px] "><label
                                                 for="name">
-                                                <svg stroke="currentColor" fill="none" stroke-width="2"
+                                                {{-- <svg stroke="currentColor" fill="none" stroke-width="2"
                                                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
                                                     class="text-xl " height="1em" width="1em"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -206,7 +234,8 @@
                                                     <polyline points="14 2 14 8 20 8"></polyline>
                                                     <path d="M5 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
                                                     <path d="M7 16.5 8 22l-3-1-3 1 1-5.5"></path>
-                                                </svg>
+                                                </svg> --}}
+                                                <i class="fa-solid fa-phone"></i>
                                                 
                                             </label><input class="text-sm-lg flex-1 bg-transparent  outline-none"
                                                 type="text" name="mobile" id="mobile" placeholder="আপনার মোবাইল নম্বর" required

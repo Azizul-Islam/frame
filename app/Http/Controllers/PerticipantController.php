@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Perticipant;
+use App\Exports\ParticipantsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PerticipantController extends Controller
@@ -36,5 +38,10 @@ class PerticipantController extends Controller
         }
         Perticipant::create($data);
         return response()->json(['status'=>200,'msg'=>'Your submit success']);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ParticipantsExport, 'participants.xlsx');
     }
 }
