@@ -26,7 +26,7 @@
             border-radius: 50%;
             }
         }
-        @media only screen and (min-width: 600px) and (min-width: 501px){
+        /* @media only screen and (min-width: 600px) and (min-width: 501px){
             .circlediv {
             position: absolute;
             top: 20.3%;
@@ -36,7 +36,7 @@
             font-size: 1em;
             border-radius: 50%;
             }
-        }
+        } */
         
     </style>
 
@@ -115,16 +115,16 @@
                         <div class="mx-auto max-w-[50rem] text-center">
                             <p
                                 class="text-gradient mx-auto my-7 inline-block text-center text-xl font-bold text-black md:text-2xl">
-                                {{ $campaign->heading_bn }}</p>
+                                {{ $setting->language == 'en' ? $campaign->heading_en : $campaign->heading_bn }}</p>
                             <p
                                 class="text-gradient mx-auto inline-block text-center text-sm font-bold text-black md:text-sm">
-                                {{ $campaign->description_bn }}</p>
-                            @if($campaign->sub_heading_bn)
+                                {{ $setting->language == 'en' ? $campaign->description_en : $campaign->description_bn }}</p>
+                            @if($campaign->sub_heading_bn || $campaign->sub_heading_en)
                             <p
                                 class="text-gradient mx-auto my-7 inline-block text-center text-sm font-bold text-black md:text-sm">
-                                {{ $campaign->sub_heading_bn }}</p>
+                                {{ $setting->language == 'en' ? $campaign->sub_heading_en : $campaign->sub_heading_bn }}</p>
                             @endif
-                            <h3 class="mb-6 text-red-700">ডাউনলোড করার আগে আপনার পছন্দমতো একটি ছবি সিলেক্ট করে নিন।</h3>
+                            <h3 class="mb-6 text-red-700">{{ $setting->language == 'en' ? $campaign->instruction_en : $campaign->instruction_bn }}</h3>
                         </div>
                         <div class="text-center">
                             <div

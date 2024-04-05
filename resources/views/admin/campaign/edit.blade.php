@@ -23,7 +23,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="heading_bn">{{ __('Heading (Bangla)') }}</label>
+                                <label for="heading_bn">{{ __('Heading (Bangla)') }} *</label>
                                 <input id="heading_bn" type="text" class="form-control @error('heading_bn') is-invalid @enderror" name="heading_bn" value="{{ old('heading_bn',$campaign->heading_bn) }}" autofocus>
 
                                 @error('heading_bn')
@@ -35,7 +35,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="sub_heading_en">{{ __('Sub Heading (English)') }} </label>
+                                <label for="sub_heading_en">{{ __('Sub Heading (English)') }} *</label>
                                 <input id="sub_heading_en" type="text" class="form-control @error('sub_heading_en') is-invalid @enderror" name="sub_heading_en" value="{{ old('sub_heading_en',$campaign->sub_heading_en) }}" autofocus>
 
                                 @error('sub_heading_en')
@@ -45,10 +45,32 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="sub_heading_bn">{{ __('Sub Heading (Bangla)') }}</label>
+                                <label for="sub_heading_bn">{{ __('Sub Heading (Bangla)') }} *</label>
                                 <input id="sub_heading_bn" type="text" class="form-control @error('sub_heading_bn') is-invalid @enderror" name="sub_heading_bn" value="{{ old('sub_heading_bn',$campaign->sub_heading_bn) }}" autofocus>
 
                                 @error('sub_heading_bn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="instruction_en">{{ __('Instruction (English)') }} *</label>
+                                <input id="instruction_en" type="text" class="form-control @error('instruction_en') is-invalid @enderror" name="instruction_en" value="{{ old('instruction_en',$campaign->instruction_en) }}" autofocus>
+
+                                @error('instruction_en')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="instruction_bn">{{ __('Instruction (Bangla)') }} *</label>
+                                <input id="instruction_bn" type="text" class="form-control @error('instruction_bn') is-invalid @enderror" name="instruction_bn" value="{{ old('instruction_bn',$campaign->instruction_bn) }}" autofocus>
+
+                                @error('instruction_bn')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -67,7 +89,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="description_bn">{{ __('Description (Bangla)') }}</label>
+                                <label for="description_bn">{{ __('Description (Bangla)') }} *</label>
                                 <textarea id="description_bn" type="text" class="form-control @error('description_bn') is-invalid @enderror" name="description_bn" autofocus>{{ old('description_bn',$campaign->description_bn) }}</textarea>
 
                                 @error('description_bn')

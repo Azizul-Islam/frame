@@ -33,11 +33,13 @@ class CampaignController extends Controller
         // dd($request->all());
         $data = $request->validate([
             'heading_en' => 'required|string',
-            'heading_bn' => 'nullable|string',
-            'sub_heading_en' => 'nullable|string',
-            'sub_heading_bn' => 'nullable|string',
+            'heading_bn' => 'required|string',
+            'sub_heading_en' => 'required|string',
+            'sub_heading_bn' => 'required|string',
+            'instruction_en' => 'required|string',
+            'instruction_bn' => 'required|string',
             'description_en' => 'required|string',
-            'description_bn' => 'nullable|string',
+            'description_bn' => 'required|string',
             'frame_one'          => 'required|mimes:jpeg,jpg,png',
             'frame_two'         => 'nullable|mimes:jpeg,jpg,png'
         ]);
@@ -82,12 +84,14 @@ class CampaignController extends Controller
     {
         $data = $request->validate([
             'heading_en' => 'required|string',
-            'heading_bn' => 'nullable|string',
-            'sub_heading_en' => 'nullable|string',
-            'sub_heading_bn' => 'nullable|string',
+            'heading_bn' => 'required|string',
+            'sub_heading_en' => 'required|string',
+            'sub_heading_bn' => 'required|string',
+            'instruction_en' => 'required|string',
+            'instruction_bn' => 'required|string',
             'description_en' => 'required|string',
-            'description_bn' => 'nullable|string',
-            'frame_one'          => 'nullable|mimes:jpeg,jpg,png',
+            'description_bn' => 'required|string',
+            'frame_one'          => 'required|mimes:jpeg,jpg,png',
             'frame_two'         => 'nullable|mimes:jpeg,jpg,png'
         ]);
         //if request has any frame
