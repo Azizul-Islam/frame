@@ -91,7 +91,7 @@ class CampaignController extends Controller
             'instruction_bn' => 'required|string',
             'description_en' => 'required|string',
             'description_bn' => 'required|string',
-            'frame_one'          => 'required|mimes:jpeg,jpg,png',
+            'frame_one'          => 'nullable|mimes:jpeg,jpg,png',
             'frame_two'         => 'nullable|mimes:jpeg,jpg,png'
         ]);
         //if request has any frame

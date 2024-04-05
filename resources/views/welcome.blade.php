@@ -262,11 +262,13 @@
                 <div class="container">
                     <div class="flex items-center justify-between rounded-t-3xl border-t bg-white px-4 py-6 lg:px-6">
                         <div class="flex items-center gap-2">
-                            <p class="sm:max-w-30px">© {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
-                                Reserved</p><img class="h-6 cursor-pointer object-contain" src="{{ asset('./backend/images/'.$setting->logo) }}"
+                            {{-- <p class="sm:max-w-30px">
+                                © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
+                                Reserved</p> --}}
+                                <img class="h-6 cursor-pointer object-contain" src="{{ asset('./backend/images/'.$setting->logo) }}"
                                 alt="logo" loading="lazy">
                         </div>
-                        <div class="ml-7 flex items-center gap-3">
+                        <div class="ml-7 flex items-center gap-2">
                             @if($setting->facebook)
                             <div
                                 class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
