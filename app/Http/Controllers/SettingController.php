@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class SettingController extends Controller
 {
@@ -14,6 +16,13 @@ class SettingController extends Controller
     {
         $setting = Setting::first();
         return view('welcome',compact('setting'));
+    }
+
+    public function setLanguage($lang='en') {
+        $setting = Setting::first();
+        $setting->language = $lang;
+        $setting->save();
+        return redirect()->back();
     }
 
     /**

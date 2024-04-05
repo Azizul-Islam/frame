@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('meta_title')->nullable();
             $table->text('description_en');
             $table->text('description_bn')->nullable();
+            $table->text('instruction_bn')->nullable();
+            $table->text('instruction_en')->nullable();
             $table->string('frame_one');
             $table->string('frame_two')->nullable();
             $table->boolean('status')->default(0);

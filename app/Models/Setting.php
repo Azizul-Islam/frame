@@ -12,6 +12,7 @@ class Setting extends Model
     protected $fillable = [
         'logo',
         'company_name',
+        'language',
         'facebook',
         'twitter',
         'instagram',
