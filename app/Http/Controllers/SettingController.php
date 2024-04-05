@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -15,7 +16,8 @@ class SettingController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        return view('welcome',compact('setting'));
+        $campaign = Campaign::where('status',1)->first();
+        return view('welcome',compact('setting','campaign'));
     }
 
     public function setLanguage($lang='en') {
@@ -41,8 +43,9 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'logo' => 'nullable|mimes:jpeg,jpg,png,sgv',
+            'logo' => 'nullable|mimes:jpeg,jpg,png,svg',
             'company_name' => 'nullable|string',
+            'meta_title' => 'nullable|string',
             'facebook' => 'nullable|string',
             'twitter' => 'nullable|string',
             'instagram' => 'nullable|string',
@@ -86,6 +89,7 @@ class SettingController extends Controller
         $data = $request->validate([
             'logo' => 'nullable|mimes:jpeg,jpg,png,svg',
             'company_name' => 'nullable|string',
+            'meta_title' => 'nullable|string',
             'facebook' => 'nullable|string',
             'twitter' => 'nullable|string',
             'instagram' => 'nullable|string',

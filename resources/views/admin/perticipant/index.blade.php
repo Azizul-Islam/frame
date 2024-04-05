@@ -8,6 +8,9 @@
                 <div class="card-header">
                     <div >
                         <span class="float-left">{{ __('Perticipant') }}</span>
+                        <a href="{{ route('perticipants.export') }}" class="text-end">
+                            {{ __('Download') }}
+                        </a>
                     </div>
                 </div>
 

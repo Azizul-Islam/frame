@@ -23,6 +23,18 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
+                                <label for="meta_title">{{ __('Meta Title') }} </label>
+                                <input id="meta_title" type="text" class="form-control @error('meta_title') is-invalid @enderror" name="meta_title" value="{{ !blank($setting) ? old('meta_title',$setting->meta_title) : old('meta_title') }}" autofocus>
+
+                                @error('meta_title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="logo">{{ __('Logo') }} *</label>
                                 <input id="logo" type="file" class="form-control @error('logo') is-invalid @enderror" name="logo">
                                 @error('logo')

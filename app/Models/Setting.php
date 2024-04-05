@@ -13,6 +13,7 @@ class Setting extends Model
         'logo',
         'company_name',
         'language',
+        'meta_title',
         'facebook',
         'twitter',
         'instagram',

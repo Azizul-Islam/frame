@@ -8,29 +8,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preload" href="/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <title>৫ পেরিয়ে ৬, নগদে সব হয়</title>
+    <title>{{ $setting->meta_title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('./frontend/frame.css') }}">
-    <!-- <script type="module" crossorigin="" src="/assets/index-950c59e9.js"></script>
-    <link rel="modulepreload" as="script" crossorigin="" href="/bannerLayouts.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="/script.js"> -->
+    <style>
+        .circlediv{
+            position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%;
+        }
+        @media only screen and (max-width: 500px) {
+            .circlediv {
+            position: absolute;
+            top: 20.3%;
+            left: 20.4%;
+            height: 155px;
+            width: 155px;
+            font-size: 1em;
+            border-radius: 50%;
+            }
+        }
+        @media only screen and (min-width: 600px) and (min-width: 501px){
+            .circlediv {
+            position: absolute;
+            top: 20.3%;
+            left: 20.4%;
+            height: 155px;
+            width: 155px;
+            font-size: 1em;
+            border-radius: 50%;
+            }
+        }
+        
+    </style>
 
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1164.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+<body data-new-gr-c-s-check-loaded="14.1164.0" cz-shortcut-listen="true">
     <div id="root">
         <nav class="sticky top-2 z-30 my-2 w-full bg-white">
             <div class="container">
                 <div
                     class="relative flex items-center justify-between gap-2 rounded-3xl px-4 py-2 shadow lg:gap-4 lg:px-6">
                     <div class="flex items-center gap-4 lg:gap-10">
-                        <div class="h-8"><img class="h-full" src="{{ asset('./frontend/frameImages/logo.svg') }}" alt="logo" loading="lazy"
+                        <div class="h-8"><img class="h-full" src="{{ asset('./backend/images/'.$setting->logo) }}" alt="logo" loading="lazy"
                                 style="cursor: pointer;"></div>
                     </div>
                 </div>
             </div>
         </nav>
         <main class="mb-12">
-            <div class="h-0 overflow-hidden">
+            {{-- <div class="h-0 overflow-hidden">
                 <div class="text-center">
                     <div style="font-size: 16px;">
                         <div style="font-size: 1em;">
@@ -79,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <section class="pb-14">
                 <div class="container mt-3">
                     <div class="mb-7">
@@ -89,17 +115,15 @@
                         <div class="mx-auto max-w-[50rem] text-center">
                             <p
                                 class="text-gradient mx-auto my-7 inline-block text-center text-xl font-bold text-black md:text-2xl">
-                                নগদের প্রতিষ্ঠাবার্ষিকী উপলক্ষে শুভেচ্ছা ও অভিনন্দন।</p>
+                                {{ $campaign->heading_bn }}</p>
                             <p
                                 class="text-gradient mx-auto inline-block text-center text-sm font-bold text-black md:text-sm">
-                                ৫ বছর পূর্ণ করে নগদ এখন ৬ বছরে! নগদের এই পথচলায় সাথে থাকার জন্য আপনাদের আন্তরিক ধন্যবাদ।
-                                আপনাদের সাহসেই আমরা দেখি সব সম্ভবের স্বপ্ন। নগদের প্রতিষ্ঠাবার্ষিকীর এই উদযাপন আরও
-                                বর্ণিল করতে আপনাদের চাই আমাদের পাশে। আপনার ছবি এবং নাম দিয়ে প্রতিষ্ঠাবার্ষিকীর এই
-                                উদযাপনে আপনিও অংশগ্রহন করতে পারেন।</p>
+                                {{ $campaign->description_bn }}</p>
+                            @if($campaign->sub_heading_bn)
                             <p
                                 class="text-gradient mx-auto my-7 inline-block text-center text-sm font-bold text-black md:text-sm">
-                                খুব সহজেই আপনার ছবিটি তৈরি করে ডাউনলোড করে নিন, এবং শেয়ার করুন আপনার সোশ্যাল মিডিয়ার
-                                পাতায়।</p>
+                                {{ $campaign->sub_heading_bn }}</p>
+                            @endif
                             <h3 class="mb-6 text-red-700">ডাউনলোড করার আগে আপনার পছন্দমতো একটি ছবি সিলেক্ট করে নিন।</h3>
                         </div>
                         <div class="text-center">
@@ -135,10 +159,10 @@
                                     style="font-size: 1em; cursor: pointer;">
                                     <div class="containerTest"
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
-                                        <img id="image" src="{{ asset('frontend/frameImages/baisakh-fb-frame11.png') }}" alt=""
+                                        <img id="image" src="{{ asset('./backend/images/'.$campaign->frame_one) }}" alt="frame_one"
                                             style="width: 100%;">
                                         <div
-                                            style="position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%; ">
+                                            class="circlediv">
                                             <div id="overlayContainer1" class="overlay"
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
@@ -201,7 +225,7 @@
                                         <label
                                             class="flex items-center gap-3 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px] "><label
                                                 for="name">
-                                                <svg stroke="currentColor" fill="none" stroke-width="2"
+                                                {{-- <svg stroke="currentColor" fill="none" stroke-width="2"
                                                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
                                                     class="text-xl " height="1em" width="1em"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +234,8 @@
                                                     <polyline points="14 2 14 8 20 8"></polyline>
                                                     <path d="M5 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
                                                     <path d="M7 16.5 8 22l-3-1-3 1 1-5.5"></path>
-                                                </svg>
+                                                </svg> --}}
+                                                <i class="fa-solid fa-phone"></i>
                                                 
                                             </label><input class="text-sm-lg flex-1 bg-transparent  outline-none"
                                                 type="text" name="mobile" id="mobile" placeholder="আপনার মোবাইল নম্বর" required
@@ -237,35 +262,59 @@
                 <div class="container">
                     <div class="flex items-center justify-between rounded-t-3xl border-t bg-white px-4 py-6 lg:px-6">
                         <div class="flex items-center gap-2">
-                            <p class="sm:max-w-30px">© 2024 <a href="http://safwahmart.com/">Safwah Mart</a>. All Rights
-                                Reserved</p><img class="h-6 cursor-pointer object-contain" src="{{ asset('frontend/frameImages/logo.svg') }}"
-                                alt="" loading="lazy">
+                            <p class="sm:max-w-30px">© {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
+                                Reserved</p><img class="h-6 cursor-pointer object-contain" src="{{ asset('./backend/images/'.$setting->logo) }}"
+                                alt="logo" loading="lazy">
                         </div>
                         <div class="ml-7 flex items-center gap-3">
+                            @if($setting->facebook)
                             <div
                                 class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="https://www.youtube.com/channel/UCYNs4xJEuSpGVEbnZ19y5Ug">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 576 512" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
-                                        </path>
-                                    </svg>
+                                <a href="{{ $setting->facebook }}">
+                                    <i class="fa-brands fa-facebook"></i>
                                 </a>
                             </div>
+                            @endif
+                            @if($setting->twitter)
                             <div
                                 class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="https://www.facebook.com/safwahmartbd">
-                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
-                                        viewBox="0 0 320 512" height="1em" width="1em"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-                                        </path>
-                                    </svg>
+                                <a href="{{ $setting->twitter }}">
+                                    <i class="fa-brands fa-twitter"></i>
                                 </a>
                             </div>
+                            @endif
+                            @if($setting->youtube)
+                            <div
+                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                <a href="{{ $setting->youtube }}">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </div>
+                            @endif
+                            @if($setting->linkedin)
+                            <div
+                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                <a href="{{ $setting->linkedin }}">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                            </div>
+                            @endif
+                            @if($setting->instagram)
+                            <div
+                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                <a href="{{ $setting->instagram }}">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </div>
+                            @endif
+                            @if($setting->telegram)
+                            <div
+                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                <a href="{{ $setting->telegram }}">
+                                    <i class="fa-brands fa-telegram"></i>
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -300,11 +349,9 @@
             xhr.send();
         });
     </script> -->
-    <!-- <script src="jquery-3.7.1.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
         // var nameInput = document.getElementById('name');
@@ -394,6 +441,6 @@
 
 
 </body>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
 
 </html>

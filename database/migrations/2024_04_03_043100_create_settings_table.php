@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('favicon')->nullable();
             $table->string('company_name');
             $table->string('language')->default('en');
+            $table->string('meta_title')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
