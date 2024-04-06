@@ -934,7 +934,8 @@ p {
 
 .border-primary {
     --tw-border-opacity: 1;
-    border-color: rgb(208 57 44 / var(--tw-border-opacity))
+    /* border-color: rgb(208 57 44 / var(--tw-border-opacity)) */
+    border-color: #332E7E;
 }
 
 .border-transparent {

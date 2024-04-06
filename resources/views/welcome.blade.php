@@ -9,24 +9,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preload" href="/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <title>{{ $setting->meta_title }}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('./frontend/frame.css') }}">
     <style>
-        .circlediv{
-            position: absolute; top: 18.4%; left: 19%; height: 320px; width: 320px; font-size: 1em; border-radius: 50%;
-        }
-        @media only screen and (max-width: 500px) {
-            .circlediv {
+        .circlediv {
             position: absolute;
-            top: 20.3%;
-            left: 20.4%;
-            height: 155px;
-            width: 155px;
+            top: 18.4%;
+            left: 19%;
+            height: 320px;
+            width: 320px;
             font-size: 1em;
             border-radius: 50%;
+        }
+
+        @media (max-width: 480px) {
+            .circlediv {
+                position: absolute;
+                top: 20.3%;
+                left: 20.4%;
+                height: 155px;
+                width: 155px;
+                font-size: 1em;
+                border-radius: 50%;
             }
         }
-        /* @media only screen and (min-width: 600px) and (min-width: 501px){
+
+        /* @media only screen and (max-width: 500px) {
             .circlediv {
             position: absolute;
             top: 20.3%;
@@ -37,7 +47,71 @@
             border-radius: 50%;
             }
         } */
-        
+        @media (min-width: 481px) and (max-width: 767px) {
+            .circlediv {
+                position: absolute;
+                top: 20.3%;
+                left: 20.4%;
+                height: 155px;
+                width: 155px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .circlediv {
+                position: absolute;
+                top: 20.3%;
+                left: 20.4%;
+                height: 155px;
+                width: 155px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1023px) {
+            .circlediv {
+                position: absolute;
+                top: 20.3%;
+                left: 20.4%;
+                height: 155px;
+                width: 155px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .circlediv {
+                top: 18.4%;
+                left: 19%;
+                height: 245px;
+                width: 245px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
+        @media (min-width: 1200px) and (max-width: 1279px) {
+            .circlediv {
+                top: 18.4%;
+                left: 19%;
+                height: 245px;
+                width: 245px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
+        @media (min-width: 1280px) and (max-width: 1919px) {
+            .circlediv {
+                position: absolute;
+                top: 18.4%;
+                left: 19%;
+                height: 320px;
+                width: 320px;
+                font-size: 1em;
+                border-radius: 50%;
+            }
+        }
     </style>
 
 </head>
@@ -49,8 +123,8 @@
                 <div
                     class="relative flex items-center justify-between gap-2 rounded-3xl px-4 py-2 shadow lg:gap-4 lg:px-6">
                     <div class="flex items-center gap-4 lg:gap-10">
-                        <div class="h-8"><img class="h-full" src="{{ asset('./backend/images/'.$setting->logo) }}" alt="logo" loading="lazy"
-                                style="cursor: pointer;"></div>
+                        <div class="h-8"><img class="h-full" src="{{ asset('./backend/images/' . $setting->logo) }}"
+                                alt="logo" loading="lazy" style="cursor: pointer;"></div>
                     </div>
                 </div>
             </div>
@@ -118,13 +192,17 @@
                                 {{ $setting->language == 'en' ? $campaign->heading_en : $campaign->heading_bn }}</p>
                             <p
                                 class="text-gradient mx-auto inline-block text-center text-sm font-bold text-black md:text-sm">
-                                {{ $setting->language == 'en' ? $campaign->description_en : $campaign->description_bn }}</p>
-                            @if($campaign->sub_heading_bn || $campaign->sub_heading_en)
-                            <p
-                                class="text-gradient mx-auto my-7 inline-block text-center text-sm font-bold text-black md:text-sm">
-                                {{ $setting->language == 'en' ? $campaign->sub_heading_en : $campaign->sub_heading_bn }}</p>
+                                {{ $setting->language == 'en' ? $campaign->description_en : $campaign->description_bn }}
+                            </p>
+                            @if ($campaign->sub_heading_bn || $campaign->sub_heading_en)
+                                <p
+                                    class="text-gradient mx-auto my-7 inline-block text-center text-sm font-bold text-black md:text-sm">
+                                    {{ $setting->language == 'en' ? $campaign->sub_heading_en : $campaign->sub_heading_bn }}
+                                </p>
                             @endif
-                            <h3 class="mb-6 text-red-700">{{ $setting->language == 'en' ? $campaign->instruction_en : $campaign->instruction_bn }}</h3>
+                            <h3 class="mb-6 text-red-700">
+                                {{ $setting->language == 'en' ? $campaign->instruction_en : $campaign->instruction_bn }}
+                            </h3>
                         </div>
                         <div class="text-center">
                             <div
@@ -159,10 +237,9 @@
                                     style="font-size: 1em; cursor: pointer;">
                                     <div class="containerTest"
                                         style="width: 67em; position: relative; display: inline-block; margin: auto; background: rgb(255, 255, 255); font-size: 1em;">
-                                        <img id="image" src="{{ asset('./backend/images/'.$campaign->frame_one) }}" alt="frame_one"
-                                            style="width: 100%;">
-                                        <div
-                                            class="circlediv">
+                                        <img id="image" src="{{ asset('./backend/images/' . $campaign->frame_one) }}"
+                                            alt="frame_one" style="width: 100%;">
+                                        <div class="circlediv">
                                             <div id="overlayContainer1" class="overlay"
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
@@ -196,31 +273,32 @@
                                     <label for="userImage"
                                         class="flex cursor-pointer items-center gap-2 rounded-md border border-primary bg-primary bg-opacity-5 px-6 py-[14px]"><svg
                                             stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                                            stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em"
-                                            width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            stroke-linecap="round" stroke-linejoin="round" class="text-xl"
+                                            height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
                                             <line x1="16" x2="22" y1="5" y2="5"></line>
                                             <line x1="19" x2="19" y1="2" y2="8"></line>
                                             <circle cx="9" cy="9" r="2"></circle>
                                             <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                                         </svg><span class="opacity-50">আপনার ছবি যুক্ত করুন</span><input
-                                            class="text-sm-lg hidden flex-1 bg-transparent outline-none" type="file"
-                                            name="image" id="userImage" required>
-                                            
-                                        </label>
+                                            class="text-sm-lg hidden flex-1 bg-transparent outline-none"
+                                            type="file" name="image" id="userImage" required>
+
+                                    </label>
 
                                     <div class="grid flex-1 gap-4 md:grid-cols-2"><label
                                             class="flex items-center gap-2 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px]"><label
-                                                for="name"><svg stroke="currentColor" fill="none" stroke-width="2"
-                                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="text-xl " height="1em" width="1em"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                for="name"><svg stroke="currentColor" fill="none"
+                                                    stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                                                    stroke-linejoin="round" class="text-xl " height="1em"
+                                                    width="1em" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                                                     <circle cx="12" cy="7" r="4"></circle>
                                                 </svg></label>
 
-                                            <input class="text-sm-lg flex-1 bg-transparent  outline-none" type="text"
-                                                name="name" id="name" placeholder="আপনার নাম" value="" required>
+                                            <input class="text-sm-lg flex-1 bg-transparent  outline-none"
+                                                type="text" name="name" id="name" placeholder="আপনার নাম"
+                                                value="" required>
                                         </label>
                                         <label
                                             class="flex items-center gap-3 rounded-md border border-primary bg-primary bg-opacity-5 px-4 py-[14px] "><label
@@ -236,20 +314,23 @@
                                                     <path d="M7 16.5 8 22l-3-1-3 1 1-5.5"></path>
                                                 </svg> --}}
                                                 <i class="fa-solid fa-phone"></i>
-                                                
+
                                             </label><input class="text-sm-lg flex-1 bg-transparent  outline-none"
-                                                type="text" name="mobile" id="mobile" placeholder="আপনার মোবাইল নম্বর" required
-                                                value=""></label></div>
+                                                type="text" name="mobile" id="mobile"
+                                                placeholder="আপনার মোবাইল নম্বর" required value=""></label>
+                                    </div>
                                 </div>
                                 <div class="flex items-center justify-center gap-4"><button id="downloadBtn"
                                         type="submit"
                                         class="primary-btn mt-6 flex items-center justify-center gap-2"><span>ডাউনলোড
                                             করুন</span><svg stroke="currentColor" fill="none" stroke-width="2"
                                             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                            class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            class="text-xl" height="1em" width="1em"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                             <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            <line x1="12" x2="12" y1="15" y2="3">
+                                            </line>
                                         </svg></button></div>
                             </div>
                         </form>
@@ -265,57 +346,57 @@
                             {{-- <p class="sm:max-w-30px">
                                 © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
                                 Reserved</p> --}}
-                                <img class="h-6 cursor-pointer object-contain" src="{{ asset('./backend/images/'.$setting->logo) }}"
-                                alt="logo" loading="lazy">
+                            <img class="h-6 cursor-pointer object-contain"
+                                src="{{ asset('./backend/images/' . $setting->logo) }}" alt="logo" loading="lazy">
                         </div>
                         <div class="ml-7 flex items-center gap-2">
-                            @if($setting->facebook)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->facebook }}">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-                            </div>
+                            @if ($setting->facebook)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->facebook }}">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                </div>
                             @endif
-                            @if($setting->twitter)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->twitter }}">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </a>
-                            </div>
+                            @if ($setting->twitter)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->twitter }}">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                </div>
                             @endif
-                            @if($setting->youtube)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->youtube }}">
-                                    <i class="fa-brands fa-youtube"></i>
-                                </a>
-                            </div>
+                            @if ($setting->youtube)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->youtube }}">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </a>
+                                </div>
                             @endif
-                            @if($setting->linkedin)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->linkedin }}">
-                                    <i class="fa-brands fa-linkedin"></i>
-                                </a>
-                            </div>
+                            @if ($setting->linkedin)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->linkedin }}">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                </div>
                             @endif
-                            @if($setting->instagram)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->instagram }}">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                            </div>
+                            @if ($setting->instagram)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->instagram }}">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </div>
                             @endif
-                            @if($setting->telegram)
-                            <div
-                                class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
-                                <a href="{{ $setting->telegram }}">
-                                    <i class="fa-brands fa-telegram"></i>
-                                </a>
-                            </div>
+                            @if ($setting->telegram)
+                                <div
+                                    class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white hover:border-primary hover:bg-primary hover:text-white">
+                                    <a href="{{ $setting->telegram }}">
+                                        <i class="fa-brands fa-telegram"></i>
+                                    </a>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -331,13 +412,13 @@
 
 
     <!-- <script>
-        document.getElementById("downloadBtn").addEventListener("click", function () {
+        document.getElementById("downloadBtn").addEventListener("click", function() {
             var image = document.getElementById("image");
             var url = image.src;
             var filename = url.substring(url.lastIndexOf("/") + 1);
             var xhr = new XMLHttpRequest();
             xhr.responseType = 'blob';
-            xhr.onload = function () {
+            xhr.onload = function() {
                 var a = document.createElement('a');
                 a.href = window.URL.createObjectURL(xhr.response);
                 a.download = filename;
@@ -352,8 +433,10 @@
         });
     </script> -->
 
+    
+    <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-    <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
         // var nameInput = document.getElementById('name');
@@ -376,10 +459,10 @@
         //     displaymobile1.textContent = mobile;
         // }); 
 
-        document.getElementById('userImage').addEventListener('change', function (event) {
+        document.getElementById('userImage').addEventListener('change', function(event) {
             var file = event.target.files[0];
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 var url = e.target.result;
                 // document.getElementById('overlayContainer').style.backgroundImage = "url('" + url + "')";
                 document.getElementById('overlayContainer1').style.backgroundImage = "url('" + url + "')";
@@ -398,47 +481,46 @@
         //     });
         // });
 
-        $('#perticipant_form').on('submit',function(e){
-                e.preventDefault();
-                $('#downloadBtn').text('Processing...');
-                $('#downloadBtn').attr('disabled',true);
-                var formData = new FormData(this);
-                console.log(formData)
-                
-                $.ajax({
-                    url: "{{ route('perticipants.store') }}",
-                    method: 'POST',
-                    dataType: 'JSON',
-                    data: formData, 
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        if(data.status == 200) {
-                            $('#downloadBtn').text('ডাউনলোড করুন');
-                            $('#downloadBtn').attr('disabled',false);
-                            $('#perticipant_form')[0].reset();
+        $('#perticipant_form').on('submit', function(e) {
+            e.preventDefault();
+            $('#downloadBtn').text('Processing...');
+            $('#downloadBtn').attr('disabled', true);
+            var formData = new FormData(this);
+            console.log(formData)
 
-                            var container = document.querySelector('.containerTest');
-                            html2canvas(container).then(function (canvas) {
-                                var link = document.createElement('a');
-                                link.download = 'composite_image.png';
-                                link.href = canvas.toDataURL('image/png');
-                                link.click();
-                            });
+            $.ajax({
+                url: "{{ route('perticipants.store') }}",
+                method: 'POST',
+                dataType: 'JSON',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    if (data.status == 200) {
+                        $('#downloadBtn').text('ডাউনলোড করুন');
+                        $('#downloadBtn').attr('disabled', false);
+                        $('#perticipant_form')[0].reset();
 
-                            // alert(data.msg);
-                        }
-                        else {
-                            $('#downloadBtn').text('ডাউনলোড করুন');
-                            $('#downloadBtn').attr('disabled',false);
-                            $.each(data.errors,function(prefix,val){
-                                alert(val[0]);
-                            });
-                        }
-                    },
-    
-                });
+                        var container = document.querySelector('.containerTest');
+                        html2canvas(container).then(function(canvas) {
+                            var link = document.createElement('a');
+                            link.download = 'composite_image.png';
+                            link.href = canvas.toDataURL('image/png');
+                            link.click();
+                        });
+
+                        // alert(data.msg);
+                    } else {
+                        $('#downloadBtn').text('ডাউনলোড করুন');
+                        $('#downloadBtn').attr('disabled', false);
+                        $.each(data.errors, function(prefix, val) {
+                            alert(val[0]);
+                        });
+                    }
+                },
+
             });
+        });
     </script>
 
 
