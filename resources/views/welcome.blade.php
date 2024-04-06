@@ -345,9 +345,9 @@
                         <div class="flex items-center gap-2">
                             {{-- <p class="sm:max-w-30px">
                                 © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
-                                Reserved</p> --}}
+                                Reserved</p>
                             <img class="h-6 cursor-pointer object-contain"
-                                src="{{ asset('./backend/images/' . $setting->logo) }}" alt="logo" loading="lazy">
+                                src="{{ asset('./backend/images/' . $setting->logo) }}" alt="logo" loading="lazy"> --}}
                         </div>
                         <div class="ml-7 flex items-center gap-2">
                             @if ($setting->facebook)

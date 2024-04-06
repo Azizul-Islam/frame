@@ -418,10 +418,11 @@ p {
 .primary-btn {
     border-radius: .75rem;
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    --tw-gradient-from: #f6921e var(--tw-gradient-from-position);
+    background: #332E7E;
+    /* --tw-gradient-from: #332E7E var(--tw-gradient-from-position);
     --tw-gradient-to: rgb(246 146 30 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-    --tw-gradient-to: #d0392c var(--tw-gradient-to-position);
+    --tw-gradient-to: #d0392c var(--tw-gradient-to-position); */
     padding: 1rem 1.5rem;
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
