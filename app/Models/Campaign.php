@@ -16,6 +16,8 @@ class Campaign extends Model
         'sub_heading_bn',
         'instruction_en',
         'instruction_bn',
+        'instruction_two_en',
+        'instruction_two_bn',
         'meta_title',
         'description_en',
         'description_bn',

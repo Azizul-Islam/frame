@@ -79,6 +79,28 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
+                                <label for="instruction_two_en">{{ __('Instruction Two (English)') }} *</label>
+                                <input id="instruction_two_en" type="text" class="form-control @error('instruction_two_en') is-invalid @enderror" name="instruction_two_en" value="{{ old('instruction_two_en') }}" autofocus>
+
+                                @error('instruction_two_en')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="instruction_two_bn">{{ __('Instruction Two (Bangla)') }} *</label>
+                                <input id="instruction_two_bn" type="text" class="form-control @error('instruction_two_bn') is-invalid @enderror" name="instruction_two_bn" value="{{ old('instruction_two_bn') }}" autofocus>
+
+                                @error('instruction_two_bn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="description_en">{{ __('Description (English)') }} *</label>
                                 <textarea id="description_en" type="text" class="form-control @error('description_en') is-invalid @enderror" name="description_en" autofocus>{{ old('description_en') }}</textarea>
 

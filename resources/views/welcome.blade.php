@@ -262,7 +262,7 @@
                     </div>
                     <div class="z-10 rounded-xl border-t-4 border-primary p-11 shadow-center-2xl">
                         <div class="mb-4">
-                            <h3 class="text-2xl">ডিজিটাল ব্যানারের জন্য আপনার তথ্য দিন:</h3>
+                            <h3 class="text-2xl">{{ $setting->language == 'en' ? $campaign->instruction_two_en : $campaign->instruction_two_bn }}</h3>
                         </div>
                         <form action="" id="perticipant_form" enctype="multipart/form-data">
                             @csrf
