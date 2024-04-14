@@ -436,7 +436,7 @@
     
     <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="{{ asset('frontend/html2canvas.js') }}"></script>
 
     <script>
         // var nameInput = document.getElementById('name');
@@ -486,7 +486,6 @@
             $('#downloadBtn').text('Processing...');
             $('#downloadBtn').attr('disabled', true);
             var formData = new FormData(this);
-            console.log(formData)
 
             $.ajax({
                 url: "{{ route('perticipants.store') }}",
