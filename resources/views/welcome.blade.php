@@ -329,7 +329,12 @@
                                             <polyline points="7 10 12 15 17 10"></polyline>
                                             <line x1="12" x2="12" y1="15" y2="3">
                                             </line>
-                                        </svg></button></div>
+                                        </svg></button>
+                                        
+                                </div>
+                                <div>
+                                    <p id="message" class="text-center text-red-400"></p>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -456,6 +461,22 @@
         //     displaymobile.textContent = mobile;
         //     displaymobile1.textContent = mobile;
         // }); 
+
+        document.addEventListener("DOMContentLoaded", function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        var isChrome = userAgent.indexOf("chrome") > -1;
+        var isFirefox = userAgent.indexOf("firefox") > -1;
+        var isSafari = userAgent.indexOf("safari") > -1 && userAgent.indexOf("chrome") === -1;
+
+        var messageDiv = document.getElementById("message");
+
+        if (isChrome || isFirefox || isSafari) {
+            messageDiv.textContent = "";
+        } else {
+            messageDiv.textContent = "ছবিটি ডাউনলোড করতে অনুগ্রহ পূর্বক গুগল ক্রোম , সাফারি অথবা মজিলা ফায়ারফক্স ব্যবহার করুন!";
+        }
+        });
+
 
         document.getElementById('userImage').addEventListener('change', function(event) {
             var file = event.target.files[0];
