@@ -1317,7 +1317,7 @@ p {
 @font-face {
     font-weight: 200 900;
     font-stretch: 75% 125%;
-    src: url(/fonts/Mona-Sans.woff2) format("woff2 supports variations"), url(/fonts/Mona-Sans.woff2) format("woff2-variations");
+    src: url(/fonts/webfonts/MonaSans-Regular.woff2) format("woff2 supports variations"), url(/fonts/webfonts/MonaSans-Regular.woff2) format("woff2-variations");
     font-family: Mona Sans
 }
 
