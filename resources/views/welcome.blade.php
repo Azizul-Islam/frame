@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> --}}
-    <link rel="preload" href="{{ asset('fonts/webfonts/MonaSans-Regular.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="{{ asset('fonts/webfonts/MonaSans-Regular.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
     <title>{{ $setting->meta_title }}</title>
     <link rel="stylesheet" href="{{ asset('frontend/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('./frontend/frame.css') }}">
@@ -432,8 +432,7 @@
     </script> -->
 
     
-    <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('frontend/all.min.js') }}"></script>
     <script src="{{ asset('frontend/html2canvas.js') }}"></script>
 
