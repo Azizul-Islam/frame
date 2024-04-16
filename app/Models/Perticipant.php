@@ -14,5 +14,6 @@ class Perticipant extends Model
         'mobile',
         'designation',
         'photo',
+        'campaign_id'
     ];
 }

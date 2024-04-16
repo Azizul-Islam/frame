@@ -268,6 +268,7 @@
                             <div class="flex flex-col gap-4">
 
                                 <div class="flex flex-col gap-3 md:flex-row">
+                                    <input type="hidden" value="{{ $campaign->id }}" name="campaign_id">
                                     <label for="userImage"
                                         class="flex cursor-pointer items-center gap-2 rounded-md border border-primary bg-primary bg-opacity-5 px-6 py-[14px]"><svg
                                             stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"

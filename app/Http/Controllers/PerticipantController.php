@@ -24,6 +24,7 @@ class PerticipantController extends Controller
             'mobile' => 'required|numeric',
             'designation' => 'nullable|string',
             'photo' => 'nullable|mimes:jpeg,jpg,png',
+            'campaign_id' => 'required'
         ]);
         if(!$data->passes()){
             return response()->json(['status'=>0,'errors'=>$data->errors()->toArray()]);
