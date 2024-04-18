@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Setting') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ !blank($setting) ? route('settings.update',$setting) : route('settings') }}" enctype="multipart/form-data" autocomplete="off">
+                    <form method="POST" action="{{ !blank($setting) ? route('settings.update',$setting) : route('settings.store') }}" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @if(!blank($setting)) @method('PUT') @endif
                         <div class="row mb-3">
