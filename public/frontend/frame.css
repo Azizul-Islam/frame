@@ -418,7 +418,7 @@ p {
 .primary-btn {
     border-radius: .75rem;
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    background: #332E7E;
+    background: #ED1C24;
     /* --tw-gradient-from: #332E7E var(--tw-gradient-from-position);
     --tw-gradient-to: rgb(246 146 30 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -936,7 +936,7 @@ p {
 .border-primary {
     --tw-border-opacity: 1;
     /* border-color: rgb(208 57 44 / var(--tw-border-opacity)) */
-    border-color: #332E7E;
+    border-color: #ED1C24;
 }
 
 .border-transparent {

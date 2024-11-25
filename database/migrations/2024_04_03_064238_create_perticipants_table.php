@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('perticipants', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('mobile');
+            $table->unsignedBigInteger('campaign_id');
+            $table->string('name')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('designation')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();

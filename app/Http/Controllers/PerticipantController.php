@@ -20,8 +20,8 @@ class PerticipantController extends Controller
     public function store(Request $request)
     {
         $data = Validator::make($request->all(),[
-            'name' => 'required|string',
-            'mobile' => 'required|numeric',
+            'name' => 'nullable|string',
+            'mobile' => 'nullable|numeric',
             'designation' => 'nullable|string',
             'photo' => 'nullable|mimes:jpeg,jpg,png',
             'campaign_id' => 'required'

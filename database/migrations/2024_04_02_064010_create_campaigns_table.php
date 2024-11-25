@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('description_bn')->nullable();
             $table->text('instruction_bn')->nullable();
             $table->text('instruction_en')->nullable();
+            $table->text('instruction_two_en')->nullable();
+            $table->text('instruction_two_bn')->nullable();
             $table->string('frame_one');
             $table->string('frame_two')->nullable();
             $table->boolean('status')->default(0);
