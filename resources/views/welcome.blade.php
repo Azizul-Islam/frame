@@ -51,10 +51,10 @@
     
         @media (min-width: 1280px) and (max-width: 1919px) {
             .circlediv {
-                top: 5px;
-                left: 5px;
-                height: 500px;
-                width: 500px;
+                top: 6px;
+                left: 7px;
+                height: 520px;
+                width: 520px;
             }
         }
     </style>
