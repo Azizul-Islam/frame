@@ -13,25 +13,30 @@
     <link rel="stylesheet" href="{{ asset('./frontend/frame.css') }}">
     <style>
         .containerTest {
-            width: 67em;
+            width: 100%; 
+            max-width: 520px; 
+            height: auto; 
             position: relative;
-            display: inline-block;
-            margin: auto;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1em;
         }
-    
+
         .circlediv {
             position: absolute;
-            top: 6px;
-            left: 7px;
-            height: 520px;
-            width: 520px;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%; 
             border-radius: 50%;
-            font-size: 1em;
+            overflow: hidden; 
         }
+
     
         /* Mobile-first approach */
-        @media (max-width: 767px) {
+        /* @media (max-width: 767px) {
             .circlediv {
                 top: 3px;
                 left: 4px;
@@ -56,7 +61,7 @@
                 height: 520px;
                 width: 520px;
             }
-        }
+        } */
     </style>
     
 
@@ -136,11 +141,11 @@
                         <div class="mx-auto max-w-[50rem] text-center">
                             <p
                                 class="text-gradient mx-auto my-7 inline-block text-center text-xl font-bold text-black md:text-2xl">
-                                {{ $setting->language == 'en' ? $campaign->heading_en : $campaign->heading_bn }}</p>
-                            <p
+                                {!! $setting->language == 'en' ? $campaign->heading_en : $campaign->heading_bn !!}</p>
+                            {{-- <p
                                 class="text-gradient mx-auto inline-block text-center text-sm font-bold text-black md:text-sm mb-7">
                                 {{ $setting->language == 'en' ? $campaign->description_en : $campaign->description_bn }}
-                            </p>
+                            </p> --}}
                             {{-- @if ($campaign->sub_heading_bn || $campaign->sub_heading_en)
                                 <p
                                     class="text-gradient mx-auto my-7 inline-block text-center text-sm font-bold text-black md:text-sm">
@@ -165,26 +170,18 @@
                                                 style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
                                             </div>
                                         </div>
-                                        {{-- <div
-                                            style="text-align: right; font-weight: normal; position: absolute; margin: 0px; padding: 0px; line-height: 0; top: 60%; right: 61%; height: 5.5em; font-size: 1em;">
-                                            <p id="displayName1"
-                                                style="color: rgb(235, 214, 216); margin: 0px 0px 1.1em; padding: 0px; font-weight: 600; line-height: 0; font-size: 2em;">
-
-                                            </p>
-                                            <p id="displaymobile1"
-                                                style="color: rgb(235, 214, 216); font-weight: normal; margin: 0px; padding: 0px; line-height: 0; font-size: 1.3em;">
-
-                                            </p>
-                                        </div> --}}
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="z-10 rounded-xl border-t-4 border-primary p-11 shadow-center-2xl">
+                        @if($campaign->instruction_two_en || $campaign->instruction_two_bn)
                         <div class="mb-4">
                             <h3 class="text-2xl">{{ $setting->language == 'en' ? $campaign->instruction_two_en : $campaign->instruction_two_bn }}</h3>
                         </div>
+                        @endif
                         <form action="" id="perticipant_form" enctype="multipart/form-data">
                             @csrf
                            
@@ -238,8 +235,7 @@
                     <div class="flex items-center justify-between rounded-t-3xl border-t-4 border-primary bg-white px-4 py-6 lg:px-6">
                         <div class="flex items-center gap-2">
                             <p class="sm:max-w-30px">
-                                © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. All Rights
-                                Reserved AkijBashir IT Team</p>
+                                © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. Develope By AkijBashir IT Team</p>
                            
                         </div>
                         <div class="ml-7 flex items-center gap-2">
@@ -339,78 +335,77 @@
         if (isChrome || isFirefox || isSafari) {
             messageDiv.textContent = "";
         } else {
-            messageDiv.textContent = "ছবিটি ডাউনলোড করতে অনুগ্রহ পূর্বক গুগল ক্রোম , সাফারি অথবা মজিলা ফায়ারফক্স ব্যবহার করুন!";
+            messageDiv.textContent = "ছবিটি ডাউনলোড করতে অনুগ্রহ পূর্বক গুগল ক্রোম , সাফারি অথবা মজিলা ফায়ারফক্স ব্যবহার করুন!";
         }
-        });
+    });
+
+    document.getElementById('userImage').addEventListener('change', function (event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        var downloadBtn = document.getElementById('downloadBtn');
+
+        if (file) {
+            reader.onload = function (e) {
+                var url = e.target.result;
+                document.getElementById('overlayContainer1').style.backgroundImage = "url('" + url + "')";
+                downloadBtn.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        } else {
+            downloadBtn.classList.add('hidden');
+        }
+    });
+
+    $('#perticipant_form').on('submit', function(e) {
+        e.preventDefault();
+        $('#downloadBtn').text('Processing...');
+        $('#downloadBtn').attr('disabled', true);
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: "{{ route('perticipants.store') }}",
+            method: 'POST',
+            dataType: 'JSON',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if (data.status == 200) {
+                    $('#downloadBtn').text('ডাউনলোড করুন');
+                    $('#downloadBtn').attr('disabled', false);
+                    $('#perticipant_form')[0].reset();
+
+                    // Responsive image download
+                    var container = document.querySelector('.containerTest');
 
 
-        document.getElementById('userImage').addEventListener('change', function (event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-            var downloadBtn = document.getElementById('downloadBtn'); // Get the download button
-
-            if (file) {
-                reader.onload = function (e) {
-                    var url = e.target.result;
-                    // Update background image
-                    document.getElementById('overlayContainer1').style.backgroundImage = "url('" + url + "')";
-                    // Show the download button
-                    downloadBtn.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                // Hide the download button if no file is selected
-                downloadBtn.classList.add('hidden');
+                    html2canvas(container, {
+                        scale: 2, 
+                        useCORS: true,
+                        logging: false,
+                        allowTaint: true,
+                        imageTimeout: 0,
+                    }).then(function(canvas) {
+                        var link = document.createElement('a');
+                        link.download = 'together_we_win.png';
+                        link.href = canvas.toDataURL('image/png', 1.0);
+                        link.click();
+                    }).catch(function(error) {
+                        console.error('Error capturing image:', error);
+                        alert('Failed to download image. Please try again.');
+                    });
+                } else {
+                    $('#downloadBtn').text('ডাউনলোড করুন');
+                    $('#downloadBtn').attr('disabled', false);
+                }
+            },
+            error: function() {
+                $('#downloadBtn').text('ডাউনলোড করুন');
+                $('#downloadBtn').attr('disabled', false);
+                alert('An error occurred. Please try again.');
             }
         });
-
-
-        // document.getElementById('downloadBtn').addEventListener('click', function () {
-        //     var container = document.querySelector('.containerTest');
-        //     html2canvas(container).then(function (canvas) {
-        //         var link = document.createElement('a');
-        //         link.download = 'composite_image.png';
-        //         link.href = canvas.toDataURL('image/png');
-        //         link.click();
-        //     });
-        // });
-
-        $('#perticipant_form').on('submit', function(e) {
-            e.preventDefault();
-            $('#downloadBtn').text('Processing...');
-            $('#downloadBtn').attr('disabled', true);
-            var formData = new FormData(this);
-
-            $.ajax({
-                url: "{{ route('perticipants.store') }}",
-                method: 'POST',
-                dataType: 'JSON',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    if (data.status == 200) {
-                        $('#downloadBtn').text('ডাউনলোড করুন');
-                        $('#downloadBtn').attr('disabled', false);
-                        $('#perticipant_form')[0].reset();
-
-                        var container = document.querySelector('.containerTest');
-                        html2canvas(container).then(function(canvas) {
-                            var link = document.createElement('a');
-                            link.download = 'composite_image.png';
-                            link.href = canvas.toDataURL('image/png');
-                            link.click();
-                        });
-
-                        // alert(data.msg);
-                    } else {
-                        $('#downloadBtn').text('ডাউনলোড করুন');
-                        $('#downloadBtn').attr('disabled', false);
-                    }
-                },
-
-            });
-        });
+    });
     </script>
 
 
