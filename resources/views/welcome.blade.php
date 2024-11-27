@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
     {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> --}}
     <link href="{{ asset('fonts/webfonts/MonaSans-Regular.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
@@ -30,7 +30,6 @@
             left: 0;
             height: 100%;
             width: 100%; 
-            border-radius: 50%;
             overflow: hidden; 
         }
 
@@ -69,7 +68,7 @@
 
 <body data-new-gr-c-s-check-loaded="14.1164.0" cz-shortcut-listen="true">
     <div id="root">
-        <nav class="sticky top-2 z-30 my-2 w-full bg-white">
+        <nav class="relative z-30 my-2 w-full bg-white">
             <div class="container">
                 <div
                     class="relative flex items-center justify-between gap-2 rounded-3xl px-4 shadow lg:gap-4 lg:px-6">
@@ -133,7 +132,7 @@
         <main class="mb-12">
             
             <section class="pb-14">
-                <div class="container mt-3">
+                <div class="container">
                     <div class="mb-7">
                         <div class="overflow-hidden"><canvas width="1366" height="50"
                                 style="z-index: 2; position: static; pointer-events: none; inset: 0px; margin: auto;"></canvas>
@@ -160,14 +159,14 @@
                             <div
                                 class="flex flex-wrap justify-center gap-4 text-[4px] md:gap-6 md:text-[4px] lg:text-[6px] xl:text-[8px]">
                                 
-                                <div class="scale-105 border-primary opacity-100 rounded-md border-4 p-2 transition-all"
+                                <div class="scale-105 opacity-100 rounded-md border-4 p-2 transition-all"
                                     style="font-size: 1em; cursor: pointer;">
                                     <div class="containerTest">
                                         <img id="image" src="{{ asset('./backend/images/' . $campaign->frame_one) }}"
                                             alt="frame_one" style="width: 100%;">
                                         <div class="circlediv" style="z-index: -1">
                                             <div id="overlayContainer1" class="overlay"
-                                                style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden; border-radius: 999999px;">
+                                                style="background-size: cover; background-position: center center; background-repeat: no-repeat; height: 100%; width: 100%; overflow: hidden;">
                                             </div>
                                         </div>
                                         
@@ -176,7 +175,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="z-10 rounded-xl border-t-4 border-primary p-11 shadow-center-2xl">
+                    <div class="z-10 rounded-xl p-11 shadow-center-2xl">
                         @if($campaign->instruction_two_en || $campaign->instruction_two_bn)
                         <div class="mb-4">
                             <h3 class="text-2xl">{{ $setting->language == 'en' ? $campaign->instruction_two_en : $campaign->instruction_two_bn }}</h3>
@@ -184,7 +183,7 @@
                         @endif
                         <form action="" id="perticipant_form" enctype="multipart/form-data">
                             @csrf
-                           
+                            
                             <div class="flex flex-col gap-4">
 
                                 <div class="flex justify-between flex-col gap-3 md:flex-row">
@@ -232,7 +231,7 @@
         <footer class="mt-auto w-full">
             <div>
                 <div class="container">
-                    <div class="flex items-center justify-between rounded-t-3xl border-t-4 border-primary bg-white px-4 py-6 lg:px-6">
+                    <div class="flex items-center justify-between rounded-t-3xl border-t bg-white px-4 py-6 lg:px-6">
                         <div class="flex items-center gap-2">
                             <p class="sm:max-w-30px">
                                 © {{ date('Y') }} <a href="#">{{ $setting->company_name }}</a>. Develope By AkijBashir IT Team</p>
@@ -380,7 +379,7 @@
 
 
                     html2canvas(container, {
-                        scale: 2, 
+                        scale: window.devicePixelRatio * 3, 
                         useCORS: true,
                         logging: false,
                         allowTaint: true,
